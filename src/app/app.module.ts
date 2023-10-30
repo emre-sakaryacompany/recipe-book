@@ -13,6 +13,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {MatGridListModule} from '@angular/material/grid-list';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from 'src/environments/environment';
+import { connectFirestoreEmulator, enableIndexedDbPersistence, getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 
 
 @NgModule({
@@ -31,8 +35,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatButtonModule,
     MatToolbarModule,
     BrowserAnimationsModule,
-    MatGridListModule
-  ],
+    MatGridListModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => {
+      const firestore = getFirestore();
+      connectFirestoreEmulator(firestore, 'localhost', 8080);
+      enableIndexedDbPersistence(firestore);
+      return firestore;
+    }),
+],
   providers: [],
   bootstrap: [AppComponent]
 })
