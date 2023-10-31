@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { Subject, Observable } from 'rxjs';
 import { Firestore, collection, addDoc, query, onSnapshot, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { SpoonacularService } from 'src/app/_shared/services/spoontacular.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,13 @@ export class RecipeService {
   private recipesSubject = new Subject<Recipe[]>();
   recipes$: Observable<Recipe[]> = this.recipesSubject.asObservable();
 
-  constructor(private firestore: Firestore) {
-    this.loadInitialData();
+  constructor(private firestore: Firestore,
+    private spoontacular: SpoonacularService) {
+    // this.loadInitialData();
+  }
+
+  getNewRecipes(): Observable<any> {
+    return this.spoontacular.getRecipes('chicken');
   }
 
   private loadInitialData(): void {
