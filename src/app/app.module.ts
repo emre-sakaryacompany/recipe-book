@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 import { connectFirestoreEmulator, enableIndexedDbPersistence, getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { SpoonacularService } from './_shared/services/spoontacular.service';
 import { RecipeService } from './recipes/recipe-service/recipe-service.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -38,6 +39,7 @@ import { RecipeService } from './recipes/recipe-service/recipe-service.service';
     MatToolbarModule,
     BrowserAnimationsModule,
     MatGridListModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => {
       const firestore = getFirestore();
@@ -48,7 +50,7 @@ import { RecipeService } from './recipes/recipe-service/recipe-service.service';
 ],
   providers: [
     SpoonacularService,
-    RecipeService
+    RecipeService,
   ],
   bootstrap: [AppComponent]
 })

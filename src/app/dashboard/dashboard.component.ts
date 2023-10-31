@@ -11,7 +11,8 @@ export class DashboardComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.recipeService.getNewRecipes().subscribe(x => console.log(x));
+    this.recipeService.getNewRecipes()
+    .subscribe(x => console.log(x));
   }
 
 }

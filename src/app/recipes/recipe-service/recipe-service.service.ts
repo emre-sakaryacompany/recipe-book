@@ -38,11 +38,11 @@ export class RecipeService {
     this.loadInitialData();
   }
 
-  async updateRecipe(id: string, recipe: Recipe): Promise<void> {
-    const recipeDoc = doc(this.firestore, 'recipes', id);
-    await updateDoc(recipeDoc, recipe);
-    this.loadInitialData();
-  }
+  // async updateRecipe(id: string, recipe: Recipe): Promise<void> {
+  //   const recipeDoc = doc(this.firestore, 'recipes', id);
+  //   await updateDoc(recipeDoc, recipe);
+  //   this.loadInitialData();
+  // }
 
   async deleteRecipe(id: string): Promise<void> {
     const recipeDoc = doc(this.firestore, 'recipes', id);
