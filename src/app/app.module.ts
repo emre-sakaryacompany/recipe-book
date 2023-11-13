@@ -16,7 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
 import { connectFirestoreEmulator, enableIndexedDbPersistence, getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { SpoonacularService } from './_shared/services/spoontacular.service';
+import { SpoontacularService } from './_shared/services/spoontacular/spoontacular.service';
 import { RecipeService } from './recipes/recipe-service/recipe-service.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -49,7 +49,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     }),
 ],
   providers: [
-    SpoonacularService,
+    SpoontacularService,
     RecipeService,
   ],
   bootstrap: [AppComponent]

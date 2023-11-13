@@ -1,21 +1,28 @@
 mat-card {
-    margin: 20px;
-  }
-  
-  mat-grid-list {
-    margin: 20px;
-  }
-  
-  mat-grid-tile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  margin: 20px;
+
   mat-card-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
+
+    .recipes {
+      display: flex;
+      flex-wrap: wrap;
+      
+      mat-card {
+        width: 200px;
+        margin-bottom: 20px;
   
+        mat-card-content {
+          img {
+            width: 100%; 
+            height: auto;
+            object-fit: cover;
+          }
+  
+          button {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}

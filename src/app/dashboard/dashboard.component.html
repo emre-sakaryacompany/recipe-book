@@ -3,38 +3,18 @@
       <mat-card-title>Dashboard</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-grid-list cols="3" rowHeight="300px">
-        <mat-grid-tile>
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Recent Recipes</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <!-- Your logic for recent recipes -->
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Favorites</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <!-- Your logic for favorite recipes -->
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>Shopping List Summary</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <!-- Your logic for shopping list -->
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>
+          <h1>Suggested Recipes</h1>
+          <div class="recipes">
+            <mat-card *ngFor="let newRecipe of newRecipes$ | async">
+              <mat-card-header>
+                {{newRecipe.title}}
+              </mat-card-header>
+              <mat-card-content>
+                <img [src]="newRecipe.image">
+                <button mat-raised-button>View Recipe</button>
+              </mat-card-content>
+            </mat-card>
+          </div>
     </mat-card-content>
   </mat-card>
   
