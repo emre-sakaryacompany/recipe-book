@@ -18,3 +18,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_RECIPE_BOOK_SAKARYA }}'
           channelId: live
           projectId: recipe-book-sakarya
+          env:
+            FIREBASE_CLI_EXPERIMENTS: webframeworks
