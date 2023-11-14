@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+mat-toolbar, mat-card-header {
+    background: #1976d2 !important;
+    color: white !important;
+}
+
+mat-card-header {
+    border-radius: 4px 4px 0 0;
+    padding: 12px !important;
+}

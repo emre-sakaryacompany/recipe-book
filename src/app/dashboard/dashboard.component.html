@@ -1,20 +1,43 @@
-<mat-card>
-    <mat-card-header>
-      <mat-card-title>Dashboard</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-          <h1>Suggested Recipes</h1>
-          <div class="recipes">
-            <mat-card *ngFor="let newRecipe of newRecipes$ | async">
-              <mat-card-header>
-                {{newRecipe.title}}
-              </mat-card-header>
-              <mat-card-content>
-                <img [src]="newRecipe.image">
-                <button mat-raised-button>View Recipe</button>
-              </mat-card-content>
-            </mat-card>
-          </div>
-    </mat-card-content>
-  </mat-card>
-  
+<mat-toolbar>
+  Dashboard
+</mat-toolbar>
+<div class="recipe-container">
+  <div class="search">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Suggested Recipes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="outline" id="search-form">
+          <input matInput [formControl]="searchControl">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <div class="recipes">
+          <mat-card *ngFor="let newRecipe of newRecipes$ | async">
+            <mat-card-header>
+              {{newRecipe.title | titlecase}}
+            </mat-card-header>
+            <mat-card-content>
+              <img [src]="newRecipe.image">
+              <button mat-raised-button>View Recipe</button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="favorites">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Favorites</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let favoriteRecipe of newRecipes$ | async">
+          <h3>{{ favoriteRecipe.title | titlecase }}</h3>
+          <!-- Add more details for each favorite recipe here -->
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

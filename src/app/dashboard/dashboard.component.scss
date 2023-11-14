@@ -1,25 +1,79 @@
-mat-card {
-  margin: 20px;
+.recipe-container {
+  display: flex;
+  justify-content: space-between;
 
-  mat-card-content {
+  .search {
+    flex-grow: 2;
+    flex-basis: 0;
+    width: 50%;
 
-    .recipes {
-      display: flex;
-      flex-wrap: wrap;
-      
-      mat-card {
-        width: 200px;
-        margin-bottom: 20px;
-  
-        mat-card-content {
-          img {
-            width: 100%; 
-            height: auto;
-            object-fit: cover;
-          }
-  
-          button {
-            margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+    #search-form {
+      width: 100%;
+
+      .mat-form-field-outline {
+        color: transparent;
+      }
+
+      .mat-form-field-infix {
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        background: white;
+        padding: 0 16px;
+      }
+
+
+      .mat-form-field-wrapper {
+        align-items: center;
+      }
+
+      .mat-form-field-suffix {
+        height: 100%;
+        margin-right: 10px;
+      }
+
+      input.mat-input-element {
+        padding: 10px 0px;
+      }
+    }
+
+    mat-icon {
+      color: #757575;
+    }
+  }
+
+  .favorites {
+    flex-grow: 1;
+    max-width: 50%;
+  }
+
+  mat-card {
+    margin: 20px;
+    max-height: 65%;
+
+    mat-card-content {
+      overflow: auto;
+
+      .recipes {
+        display: flex;
+        flex-wrap: wrap;
+
+        mat-card {
+          width: 200px;
+          margin-bottom: 20px;
+
+          mat-card-content {
+            img {
+              width: 100%;
+              height: auto;
+              object-fit: cover;
+            }
+
+            button {
+              margin-top: 10px;
+            }
           }
         }
       }

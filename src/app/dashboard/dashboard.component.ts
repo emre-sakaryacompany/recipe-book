@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { RecipeService } from '../recipes/recipe-service/recipe-service.service';
-import { Observable, catchError, map, tap } from 'rxjs';
+import { Observable, catchError, debounceTime, distinctUntilChanged, map, startWith, switchMap, tap } from 'rxjs';
 import { SpoontacularRecipe } from '../_shared/services/spoontacular/spoontacular-recipes.model';
-import { SpoontacularService } from '../_shared/services/spoontacular/spoontacular.service';
 import { Rest } from '../_shared/models/rest.model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
 
   newRecipes$: Observable<SpoontacularRecipe[]>;
+  searchControl = new FormControl();
 
   constructor(private recipeService: RecipeService) {
-    this.newRecipes$ = this.recipeService.getNewRecipes('chicken').pipe(
+    this.newRecipes$ = this.searchControl.valueChanges.pipe(
+      startWith('chicken'),
+      debounceTime(400), // Wait for 400ms pause in events
+      distinctUntilChanged(), // Ignore if next search term is same as previous
+      switchMap(searchTerm => this.recipeService.getNewRecipes(searchTerm)),
       map((restResponse: Rest<SpoontacularRecipe>) =>  restResponse.results),
       catchError(error => {
         console.error('Error fetching new recipes', error);
@@ -25,6 +30,6 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.searchControl.setValue('Chicken');
   }
-
 }

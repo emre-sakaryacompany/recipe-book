@@ -18,7 +18,8 @@ import { environment } from 'src/environments/environment';
 import { connectFirestoreEmulator, enableIndexedDbPersistence, getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { SpoontacularService } from './_shared/services/spoontacular/spoontacular.service';
 import { RecipeService } from './recipes/recipe-service/recipe-service.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -40,6 +41,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatGridListModule,
     HttpClientModule,
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => {
       const firestore = getFirestore();
