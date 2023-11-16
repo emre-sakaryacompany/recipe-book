@@ -17,9 +17,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private recipeService: RecipeService) {
     this.newRecipes$ = this.searchControl.valueChanges.pipe(
-      startWith('chicken'),
-      debounceTime(400), // Wait for 400ms pause in events
-      distinctUntilChanged(), // Ignore if next search term is same as previous
+      startWith(''),
+      debounceTime(400),
+      distinctUntilChanged(),
       switchMap(searchTerm => this.recipeService.getNewRecipes(searchTerm)),
       map((restResponse: Rest<SpoontacularRecipe>) =>  restResponse.results),
       catchError(error => {
@@ -30,6 +30,6 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.searchControl.setValue('Chicken');
+    this.searchControl.setValue('');
   }
 }

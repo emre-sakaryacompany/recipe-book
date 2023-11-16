@@ -1,8 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-mat-toolbar, mat-card-header {
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-toolbar,
+mat-card-header {
     background: #1976d2 !important;
     color: white !important;
 }
@@ -10,4 +19,30 @@ mat-toolbar, mat-card-header {
 mat-card-header {
     border-radius: 4px 4px 0 0;
     padding: 12px !important;
+}
+
+.recipe-container {
+    mat-form-field#search-form {
+        width: 100%;
+        padding-top: 16px;
+
+        .mdc-notched-outline {
+            display: none;
+        }
+
+        .mat-mdc-form-field-infix {
+            background: #F5F5F5;
+            border-radius: 4px;
+            padding-left: 20px;
+        }
+
+        .mat-mdc-form-field-icon-suffix {
+            color: #757575;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+    }
 }

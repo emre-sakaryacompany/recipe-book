@@ -8,8 +8,8 @@
         <mat-card-title>Suggested Recipes</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-form-field appearance="outline" id="search-form">
-          <input matInput [formControl]="searchControl">
+        <mat-form-field appearance="outline" id="search-form" subscriptSizing="dynamic">
+          <input matInput [formControl]="searchControl" placeholder="Search">
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <div class="recipes">

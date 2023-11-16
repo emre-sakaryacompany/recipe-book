@@ -12,6 +12,10 @@
             form {
                 mat-form-field {
                     width: 100%;
+
+                    &#email {
+                        padding-top: 16px;
+                    }
                 }
         
                 .button-div {

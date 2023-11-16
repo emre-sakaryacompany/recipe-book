@@ -1,47 +1,16 @@
 .recipe-container {
   display: flex;
   justify-content: space-between;
+  height: 90vh;
 
   .search {
     flex-grow: 2;
     flex-basis: 0;
     width: 50%;
+    min-width: 50%;
 
     display: flex;
     flex-wrap: wrap;
-
-    #search-form {
-      width: 100%;
-
-      .mat-form-field-outline {
-        color: transparent;
-      }
-
-      .mat-form-field-infix {
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        background: white;
-        padding: 0 16px;
-      }
-
-
-      .mat-form-field-wrapper {
-        align-items: center;
-      }
-
-      .mat-form-field-suffix {
-        height: 100%;
-        margin-right: 10px;
-      }
-
-      input.mat-input-element {
-        padding: 10px 0px;
-      }
-    }
-
-    mat-icon {
-      color: #757575;
-    }
   }
 
   .favorites {
@@ -52,13 +21,14 @@
   mat-card {
     margin: 20px;
     max-height: 65%;
+    overflow-y: hidden;
 
     mat-card-content {
-      overflow: auto;
-
       .recipes {
         display: flex;
         flex-wrap: wrap;
+        height: 50%;
+        overflow-y: auto;
 
         mat-card {
           width: 200px;
